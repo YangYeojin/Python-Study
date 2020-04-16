@@ -33,7 +33,3 @@ def solution(numbers):
         if should_0 == 0:
             answer += 1
     return answer
-# 테스트 7 실패
-
-print(solution("17"))
-print(solution("011"))
