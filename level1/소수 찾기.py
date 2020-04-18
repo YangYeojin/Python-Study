@@ -39,7 +39,7 @@ def solution(n):
                 print("i:", i)
                 answer += 1
     return answer
-#2,3,5의 배수를 제거해주었지만 시간 초과
+# 2,3,5의 배수를 제거해주었지만 시간 초과
 '''
 
 
