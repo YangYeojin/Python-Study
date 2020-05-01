@@ -5,5 +5,5 @@ def solution(x, n):
         return [0] * n
     # x가 0이 아닐 때
     for i in range(x, x*(n+1), x):
-        answer += [i]
+        answer.append(i)
     return answer
