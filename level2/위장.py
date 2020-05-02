@@ -19,5 +19,3 @@ def solution(clothes):
     for i in range(len(category_set)):
         answer *= clothes_for_each_category[category_set[i]] + 1
     return answer - 1
-
-print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"], ["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]))
