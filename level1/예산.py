@@ -2,10 +2,6 @@
 
 def solution(d, budget):
     answer = 0
-
-    print("d:", d)
-    print("sum(d):", sum(d), ", budget:", budget)
-
     if sum(d) <= budget:
         return len(d)
     else:
