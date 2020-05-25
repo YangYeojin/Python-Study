@@ -6,12 +6,11 @@ def solution(d, budget):
         return len(d)
     else:
         d.sort()
-        d += [1]    # out of range 오류 해결을 위해 마지막에 1을 붙여 줌
         supportSum = 0  # 지금까지 다른 부서에 지원되기로 할당된 금액의 합
-        while supportSum <= budget:
+        while supportSum+d[answer] <= budget:
             supportSum += d[answer]
             answer += 1
-        return answer - 1
+        return answer
 
 print("answer:", solution([1,3,2,5,4], 9))
 print("-"*20)
