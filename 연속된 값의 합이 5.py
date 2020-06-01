@@ -1,3 +1,17 @@
+# 사실 생각한 건 이건데
+def linksum0(li, sumV):
+    answer = 0
+    for i in range(len(li)):
+        if li[i] == 5:
+            answer += 1
+        else:
+            for j in range(sumV):
+                if sum(li[i:i+j]) == 5:
+                    answer += 1
+    return answer
+
+
+# for 쓰지 말래서 손으로 for문 돌아갈 걸 작성함
 def linksum1(li):
     answer = 0
     for i in range(len(li)):
@@ -19,7 +33,7 @@ def linksum1(li):
     return answer
 
 
-
+# 양심이 아파서 새로운 방법도 시도해 봄
 def linksum2(li):
     answer, i, liSum = 0, 0, 0
     j = i
@@ -35,6 +49,8 @@ def linksum2(li):
             liSum = 0
     return answer
 
+print(linksum0([1, 2, 2, 3, 4, 1, 5], 5))
+print("="*10)
 print(linksum1([1, 2, 2, 3, 4, 1, 5]))
 print("="*10)
 print(linksum2([1, 2, 2, 3, 4, 1, 5]))
