@@ -28,7 +28,7 @@ def solution(prices):
         # 가장 마지막에 기록된 주식 처리
         if dic_list[i][0] == len(dic_list)-1:
             dic_list[i].append(0)
-        # 각 주식 값에서
+        # 주식가격이 끝까지 떨어지지 않았을 때 처리
         elif dic_list[i][0] == min(dic_list[i:][0]):
             dic_list[i].append(len(dic_list[i:])-1)
 
