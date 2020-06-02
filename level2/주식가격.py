@@ -33,7 +33,6 @@ def solution(prices):
             dic_list[i].append(len(dic_list[i:])-1)
 
         else:
-            print(min(dic_list[i:][0]))
             dic_list[i].append("Q. 여기 어떻게 쓰면 될까요?")
 
         print(dic_list[i], "\t", dic_list[i+1:])
