@@ -34,7 +34,7 @@ def solution(prices):
 
         else:
             print(min(dic_list[i:][0]))
-            dic_list[i].append(max(dic_list[:i][0]) - len(dic_list[i:]))
+            dic_list[i].append("Q. 여기 어떻게 쓰면 될까요?")
 
         print(dic_list[i], "\t", dic_list[i+1:])
     print("\n", sorted(dic_list, key=operator.itemgetter(0)))
