@@ -8,9 +8,7 @@ def solution(bridge_length, weight, truck_weights):
         queue.pop(0)
         if truck_weights[0] + sumQ <= weight:
             sumQ += truck_weights[0]
-            temp = truck_weights[0]
-            truck_weights.pop(0)
-            queue.append(temp)
+            queue.append(truck_weights.pop(0))
         else:
             queue.append(0)
     return seconds + bridge_length
