@@ -32,6 +32,8 @@ def solution(prices):
         elif dic_list[i][0] == min(dic_list[i:][0]):
             dic_list[i].append(len(dic_list[i:])-1)
 
+        elif max(dic_list[:i][0]) > dic_list[i][0]:
+            dic_list[i].append(max(dic_list[:i][0]) - len(dic_list[i:]))
         else:
             dic_list[i].append("Q. 여기 어떻게 쓰면 될까요?")
 
