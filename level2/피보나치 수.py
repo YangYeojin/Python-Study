@@ -1,3 +1,6 @@
+# 굳이 문제에서 주어진 순서로 생각할 필요 없는 것 같음
+# 반복문을 사용하여 [a + (a-1), a]의 형식으로 풀면 될 듯
+
 def solution1(n):
     domain = [1, 0]
     i = 2
@@ -30,16 +33,17 @@ def solution3(n):
     return sum(domain) % 1234567
 # sum(domain)과 domain[0] + domain[1]이랑 같은 연산일 거라고 생각했는데 sum()이 훨씬 시간을 많이 사용함
 # 테스트 13번 기준 203.88ms, 10.8MB
+# 그런데 "return"에서만 sum()을 사용한 게 아예 안쓴 것보다 약간 더 빠름
 
 
 def solution(n):
-    domain = [1, 0]
+    domain1, domain2 = 1, 0
     i = 2
     while True:
         if i == n:
-            return sum(domain) % 1234567
+            return (domain1 + domain2) % 1234567
         else:
-            domain = [domain[0] + domain[1], domain[0]]
+            domain1, domain2 = domain1 + domain2, domain1
             i += 1
-# ??? 그런데 1번과 3번을 조합하여 return에서만 sum()을 사용한 게 더 빠름
-# 테스트 13번 기준 120.32ms, 10.8MB
+# 혹시나 하고 배열을 풀고 각자 변수로 할당해 봤는데 더 빨라짐
+# 테스트 13번 기준 114.07ms, 10.7MB
