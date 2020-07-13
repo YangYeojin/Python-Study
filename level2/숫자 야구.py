@@ -28,6 +28,9 @@ print(solution([[123, 1, 1], [356, 1, 0], [327, 2, 0], [489, 0, 1]]))
 
 
 '''
+# 순열이랑 조합 공부하다가 조합 함수를 직접 짜는 코드를 발견했는데 'yield'라던가 'generator'에 대해 설명해주고 있어서 신기해서 가져와봤어요
+# 코드 짤 때 가끔 < ~~~~ object generator at 0X00000217876AEBa0> 이런 거 보이는데 이게 뭔지 알려줘요
+# https://blog.naver.com/PostView.nhn?blogId=kmh03214&logNo=221685090465&parentCategoryNo=&categoryNo=26&viewDate=&isShowPopularPosts=true&from=search
 # 조합 함수
 def combinations(arr, r):
     for i in range(len(arr)):
@@ -42,6 +45,4 @@ pr = list()
 for combi in combinations('12345', 3):
     pr += [''.join(combi)]
 print(pr)
-
-
 '''
