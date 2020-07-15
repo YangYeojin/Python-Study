@@ -6,4 +6,5 @@ def solution(citations):
             return len(citations) - h
     return 0
 
+
 print(solution([10, 13, 0, 16, 1, 15]))
