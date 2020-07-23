@@ -47,7 +47,5 @@ def solution(scoville, K):
         answer += 1
     return answer
 
-# 아싸 금방 했다
-# 다른 사람 답 봤는데 이해를 못하겠다 왜 저렁 식으로 풀었지
 print(solution([1,1,2,3],20))
 print(solution([1,2,3,9,10,12], 7))
