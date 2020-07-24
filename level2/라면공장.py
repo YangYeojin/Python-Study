@@ -48,7 +48,20 @@ def solution(stock, dates, supplies, k):
     return answer
 ### 효율성 2,3번에서 걸림
 '''
+def solution(stock, dates, supplies, k):
+    answer = 0
+    day = 0
+    temp = []
+    while stock < k:
+        for i in range(day, len(dates)):
+            if dates[i] <= stock:
+                day = i + 1
+                heapq.heappush(temp, -supplies[i])
+            else:
+                break
+        stock += -heapq.heappop(temp)
+        answer += 1
+    return answer
 
-
-print(solution(4, [4,10,15],[20,5,10],40))
+print(solution(4, [4,10,15],[20,5,10],30))
 print(solution(4, [4,7,10,15,21,22,25],[20,7,5,10,1,5,2],40))
