@@ -11,6 +11,6 @@ def solution(number, k):
     return answer
 
 
-#print(solution("1231234", 3))
+print(solution("1231234", 3))
 # 테스트 12번 해결용
 print(solution("319999", 3))
