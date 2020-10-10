@@ -1,4 +1,5 @@
 import sys
+from collections import deque
 
 
 def maze_escape():
@@ -7,39 +8,39 @@ def maze_escape():
     maze = []
     for i in range(N):
         maze += list(map(str, sys.stdin.readline().split()))
-    roadLen = 1
 
-    # range 오류 귀찮으니까 그냥 0으로 패딩
-    pMaze = []
-    for i in range(N+2):
-        if i == 0 or i == N+1:
-            pMaze += ['0'*(M+2)]
-        else:
-            pMaze += ['0'+maze[i-1]+'0']
-    visit = [[False for col in range(M+2)] for row in range(N+2)]   # 방문 여부 확인하는 테이블도 패딩한 크기로 그림
+    # 이동 방향, 방문
+    dirR = [0, 1, 0, -1]
+    dirC = [1, 0, -1, 0]
+    cntList = []
+    visit = [[False for col in range(M)] for row in range(N)]
+    visit[0][0] = True
 
-    # 이동 방향
-    dirX = [0, 1, -1, 0]
-    dirY = [1, 0, 0, -1]
+    # dfs 구현... 이제 생각해보니 bfs로 해야 할 것 같은데
+    def dfs(r, c, cnt, visited):
+        # 큐 구현
+        queue = deque()
+        for i in range(4):
+            if r + dirR[i] >= 0 and r + dirR[i] < N and c + dirC[i] >= 0 and c + dirC[i] < M and maze[r + dirR[i]][c + dirC[i]] == '1' and visited[r + dirR[i]][c + dirC[i]] == False:
+                queue.append((r + dirR[i], c + dirC[i], cnt))
 
-    # dfs ~~ 이제 생각해보니 이건 bfs가 나았으려나?
-    def dfs(graph, c, r, visited, cnt):
-        visited[r][c] = True
-        for k in range(4):
-            if r == N and c == M:
-                print(cnt)
-                break
-            elif graph[r+dirY[k]][c+dirX[k]] == '1' and visited[r+dirY[k]][c+dirX[k]] is False:
-                cnt += 1
-                dfs(graph, c + dirX[k], r + dirY[k], visited, cnt)
-                if r == N and c == M:
-                    print(cnt)
-                    break
-                else:
-                    cnt -= 1
+        # 큐가 빌 때까지
+        while queue:
+            NowR, NowC, NowCnt = queue.popleft()
+            # 네 개의 방향
+            visited[NowR][NowC] = True
+            NowCnt += 1
+            if NowR == N - 1 and NowC == M - 1:
+                cntList.append(NowCnt)
+                visited[NowR][NowC] = False
+            else:
+                bfs(NowR, NowC, NowCnt, visited)
+                visited[NowR][NowC] = False
+
 
     # 함수 호출
-    dfs(pMaze, 1, 1, visit, roadLen)
+    dfs(0, 0, 1, visit)
+    print(min(cntList))
 
 
 maze_escape()
